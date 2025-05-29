@@ -1,33 +1,65 @@
+# Built application files
+*.apk
+*.ap_ 
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+build/
+
 # Gradle files
 .gradle/
 build/
+*/build/
+!gradle-wrapper.jar
+gradle-app.setting
+gradle-wrapper.properties
+
+# Signing files
+*.keystore
+*.jks
+
+# Proguard
+proguard/
+*.pro.user
+
+# Log files
+*.log
+
+# Android Studio & IntelliJ specific
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
 
 # Local configuration file (sdk path, etc)
 local.properties
 
-# Log/OS Files
-*.log
+# Node/JS stuff (if you're experimenting with React Native or hybrid)
+node_modules/
+npm-debug.log
 
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
-*.apk
-output.json
+# Mac-specific
+.DS_Store
 
-# IntelliJ
-*.iml
-.idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
+# Windows-specific
+Thumbs.db
 
-# Keystore files
-*.jks
-*.keystore
-
-# Google Services (e.g. APIs or Firebase)
-google-services.json
-
-# Android Profiling
-*.hprof
+# ViewBinding / DataBinding generated classes
+**/build/generated/
+**/build/intermediates/
+**/build/tmp/
