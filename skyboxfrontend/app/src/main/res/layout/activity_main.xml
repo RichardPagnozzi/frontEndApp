@@ -1,0 +1,129 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="?android:attr/windowBackground">
+
+    <!-- Sidebar / Drawer -->
+    <LinearLayout
+        android:id="@+id/side_menu"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0"
+        android:visibility="gone"
+        android:background="#1E1E1E"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingTop="32dp"
+        android:paddingEnd="12dp">
+
+        <!-- Navigation Buttons (stabilized) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nav_comms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:gravity="start|center_vertical"
+            android:paddingVertical="10dp"
+            android:text="Comms"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:cornerRadius="16dp"
+            app:icon="@drawable/ic_comms"
+            app:iconGravity="textStart"
+            app:iconPadding="12dp"
+            app:iconSize="20dp"
+            app:iconTint="@android:color/white"
+            app:paddingEnd="16dp"
+            app:paddingStart="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nav_map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:gravity="start|center_vertical"
+            android:text="Map"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:cornerRadius="16dp"
+            app:icon="@drawable/ic_map"
+            app:iconGravity="textStart"
+            app:iconPadding="12dp"
+            app:iconSize="20dp"
+            app:iconTint="@android:color/white"
+            app:paddingEnd="16dp"
+            app:paddingStart="16dp"
+            android:paddingVertical="10dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nav_operations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:gravity="start|center_vertical"
+            android:text="Operations"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:cornerRadius="16dp"
+            app:icon="@drawable/ic_operations"
+            app:iconGravity="textStart"
+            app:iconPadding="12dp"
+            app:iconSize="20dp"
+            app:iconTint="@android:color/white"
+            app:paddingEnd="16dp"
+            app:paddingStart="16dp"
+            android:paddingVertical="10dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nav_trivia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:gravity="start|center_vertical"
+            android:text="Trivia"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:cornerRadius="16dp"
+            app:icon="@drawable/ic_trivia"
+            app:iconGravity="textStart"
+            app:iconPadding="12dp"
+            app:iconSize="20dp"
+            app:iconTint="@android:color/white"
+            app:paddingEnd="16dp"
+            app:paddingStart="16dp"
+            android:paddingVertical="10dp" />
+    </LinearLayout>
+
+    <!-- Main Content Area -->
+    <FrameLayout
+        android:id="@+id/fragment_container_view"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#222222" />
+</LinearLayout>

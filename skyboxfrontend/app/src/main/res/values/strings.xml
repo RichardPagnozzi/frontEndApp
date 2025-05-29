@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">skybox-frontend</string>
+    <string name="log_in">Log in</string>
+    <string name="callsign">Callsign</string>
+    <string name="chat_ip">Chat IP</string>
+    <string name="login">Log in</string>
+    <string name="password">Password</string>
+</resources>

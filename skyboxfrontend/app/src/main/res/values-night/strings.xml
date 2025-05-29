@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_in">Log in</string>
+    <string name="callsign">Callsign</string>
+    <string name="chat_ip">Chat IP</string>
+    <string name="login">Log in</string>
+</resources>
