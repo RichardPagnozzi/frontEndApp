@@ -99,11 +99,16 @@ public class MainActivity extends AppCompatActivity {
     private void updateSelectedButton(MaterialButton newSelected) {
         if (selectedButton != null) {
             // Reset old button style
-            selectedButton.setBackgroundTintList(ContextCompat.getColorStateList(this, android.R.color.darker_gray));
+            selectedButton.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.surface));
+            selectedButton.setTextColor(ContextCompat.getColor(this, R.color.primary_text));
+            selectedButton.setIconTint(ContextCompat.getColorStateList(this, R.color.primary_text));
         }
 
-        // Set new style
-        newSelected.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.primary_blue));
+        // Apply accent to new selection
+        newSelected.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.accent));
+        newSelected.setTextColor(ContextCompat.getColor(this, R.color.text_on_accent));
+        newSelected.setIconTint(ContextCompat.getColorStateList(this, R.color.text_on_accent));
+
         selectedButton = newSelected;
     }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="?android:attr/windowBackground">
+    android:background="@color/background">
 
     <!-- Sidebar / Drawer -->
     <LinearLayout
@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:layout_weight="0"
         android:visibility="gone"
-        android:background="#1E1E1E"
+        android:background="@color/surface"
         android:orientation="vertical"
         android:gravity="center_vertical"
         android:paddingStart="12dp"
@@ -29,12 +29,12 @@
             android:minWidth="0dp"
             android:minHeight="48dp"
             android:layout_marginBottom="12dp"
-            android:backgroundTint="@android:color/darker_gray"
+            android:backgroundTint="@color/surface"
             android:gravity="start|center_vertical"
             android:paddingVertical="10dp"
             android:text="Comms"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
+            android:textColor="@color/primary_text"
             android:maxLines="1"
             android:ellipsize="end"
             app:cornerRadius="16dp"
@@ -42,7 +42,7 @@
             app:iconGravity="textStart"
             app:iconPadding="12dp"
             app:iconSize="20dp"
-            app:iconTint="@android:color/white"
+            app:iconTint="@color/primary_text"
             app:paddingEnd="16dp"
             app:paddingStart="16dp" />
 
@@ -53,11 +53,11 @@
             android:minWidth="0dp"
             android:minHeight="48dp"
             android:layout_marginBottom="12dp"
-            android:backgroundTint="@android:color/darker_gray"
+            android:backgroundTint="@color/surface"
             android:gravity="start|center_vertical"
             android:text="Map"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
+            android:textColor="@color/primary_text"
             android:maxLines="1"
             android:ellipsize="end"
             app:cornerRadius="16dp"
@@ -65,7 +65,7 @@
             app:iconGravity="textStart"
             app:iconPadding="12dp"
             app:iconSize="20dp"
-            app:iconTint="@android:color/white"
+            app:iconTint="@color/primary_text"
             app:paddingEnd="16dp"
             app:paddingStart="16dp"
             android:paddingVertical="10dp" />
@@ -77,11 +77,11 @@
             android:minWidth="0dp"
             android:minHeight="48dp"
             android:layout_marginBottom="12dp"
-            android:backgroundTint="@android:color/darker_gray"
+            android:backgroundTint="@color/surface"
             android:gravity="start|center_vertical"
             android:text="Operations"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
+            android:textColor="@color/primary_text"
             android:maxLines="1"
             android:ellipsize="end"
             app:cornerRadius="16dp"
@@ -89,7 +89,7 @@
             app:iconGravity="textStart"
             app:iconPadding="12dp"
             app:iconSize="20dp"
-            app:iconTint="@android:color/white"
+            app:iconTint="@color/primary_text"
             app:paddingEnd="16dp"
             app:paddingStart="16dp"
             android:paddingVertical="10dp" />
@@ -101,11 +101,11 @@
             android:minWidth="0dp"
             android:minHeight="48dp"
             android:layout_marginBottom="12dp"
-            android:backgroundTint="@android:color/darker_gray"
+            android:backgroundTint="@color/surface"
             android:gravity="start|center_vertical"
             android:text="Trivia"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
+            android:textColor="@color/primary_text"
             android:maxLines="1"
             android:ellipsize="end"
             app:cornerRadius="16dp"
@@ -113,7 +113,7 @@
             app:iconGravity="textStart"
             app:iconPadding="12dp"
             app:iconSize="20dp"
-            app:iconTint="@android:color/white"
+            app:iconTint="@color/primary_text"
             app:paddingEnd="16dp"
             app:paddingStart="16dp"
             android:paddingVertical="10dp" />
@@ -125,5 +125,5 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="#222222" />
+        android:background="@color/background" />
 </LinearLayout>
