@@ -2,51 +2,129 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/chat_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1E1E2E"
-    android:padding="12dp">
+    android:background="@drawable/bg_gradient_vertical"
+    android:padding="0dp">
 
-    <!-- Chat RecyclerView -->
+    <!-- Sidebar with Add Contact / Group / ADA Bot and Contact List -->
+    <LinearLayout
+        android:id="@+id/sidebar_container"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:elevation="2dp"
+        android:gravity="top"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_add_contact"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Add Contact"
+            android:src="@drawable/ic_person_add"
+            app:tint="@color/accent" />
+
+        <ImageButton
+            android:id="@+id/btn_add_group"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Add Group"
+            android:src="@drawable/ic_group_add"
+            app:tint="@color/accent" />
+
+        <ImageButton
+            android:id="@+id/btn_select_ada"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="ADA Bot"
+            android:src="@drawable/ic_robot"
+            app:tint="@color/accent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/secondary" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sidebar_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp" />
+    </LinearLayout>
+
+    <!-- Chat Messages -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/chatInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/input_container"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="8dp" />
+        app:layout_constraintStart_toEndOf="@id/sidebar_container"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Input Area -->
+    <!-- Input Bar -->
     <LinearLayout
-        android:id="@+id/chatInputLayout"
+        android:id="@+id/input_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@drawable/bg_input_container"
+        android:elevation="4dp"
         android:orientation="horizontal"
-        android:background="#2A2A40"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sidebar_container">
+
+        <ImageButton
+            android:id="@+id/btn_voice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Voice Mode"
+            android:src="@drawable/ic_headset_mic"
+            app:tint="@color/accent" />
 
         <EditText
             android:id="@+id/chatInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Type a message..."
             android:background="@android:color/transparent"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#AAAAAA" />
+            android:hint="Type a message..."
+            android:paddingStart="8dp"
+            android:inputType="textMultiLine"
+            android:textColor="@color/primary_text"
+            android:textColorHint="@color/secondary" />
 
         <ImageButton
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_send"
+            android:layout_marginStart="4dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:tint="#A8B4FF" />
+            android:contentDescription="Send"
+            android:src="@drawable/ic_message_send"
+            app:tint="@color/accent" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
