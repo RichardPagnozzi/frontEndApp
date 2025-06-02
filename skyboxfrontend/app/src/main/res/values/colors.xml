@@ -5,8 +5,7 @@
     <color name="primary_text">#C5C9D1</color>        <!-- Tactical Gray -->
     <color name="accent">#3DAEFF</color>              <!-- HUD Blue -->
     <color name="secondary">#5E748D</color>           <!-- Signal Blue -->
-    <color name="tab_inactive">#888888</color>        <!-- Dim Gray for inactive tabs -->
-    <color name="tab_indicator">#3DAEFF</color>       <!-- Accent used for tab underline -->
     <color name="text_on_accent">#0B0F1A</color>      <!-- Deep navy for text on bright buttons/tabs -->
+    <color name="accent_faded">#333DAEFF</color>      <!-- 20% opacity HUD Blue -->
 
 </resources>

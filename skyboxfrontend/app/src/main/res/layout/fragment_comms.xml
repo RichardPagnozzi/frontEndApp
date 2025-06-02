@@ -2,81 +2,83 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/comms_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:padding="16dp"
-    tools:context="com.example.skybox_frontend.ui.comms.CommsFragment">
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="15dp"
+    android:background="@color/background">
 
-    <!-- Custom Tab Group -->
+    <!-- Left-aligned text-only tabs with ripple -->
     <LinearLayout
-        android:id="@+id/comms_tab_group"
+        android:id="@+id/tab_row"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:orientation="horizontal"
+        android:gravity="start|center_vertical"
+        android:baselineAligned="false"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <!-- ACTIVE Tab -->
         <TextView
             android:id="@+id/tab_chat"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="20dp"
+            android:gravity="center"
             android:text="Chat"
-            android:textColor="@color/text_on_accent"
-            android:background="@drawable/tab_background_selected"
-            android:textSize="16sp"
-            android:paddingVertical="4dp"
-            android:paddingHorizontal="12dp"
-            android:textStyle="bold" />
+            android:textSize="14sp"
+            android:textColor="@color/primary_text"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <!-- INACTIVE Tabs -->
         <TextView
             android:id="@+id/tab_voice"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="20dp"
+            android:gravity="center"
             android:text="Voice"
-            android:textColor="@color/tab_inactive"
-            android:textSize="16sp"
-            android:paddingVertical="4dp"
-            android:paddingHorizontal="12dp"
-            android:background="?attr/selectableItemBackground" />
+            android:textSize="14sp"
+            android:textColor="@color/secondary"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
 
         <TextView
             android:id="@+id/tab_ada"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="20dp"
+            android:gravity="center"
             android:text="ADA Bot"
-            android:textColor="@color/tab_inactive"
-            android:textSize="16sp"
-            android:paddingVertical="4dp"
-            android:paddingHorizontal="12dp"
-            android:background="?attr/selectableItemBackground" />
+            android:textSize="14sp"
+            android:textColor="@color/secondary"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
     </LinearLayout>
 
-    <!-- Underline Indicator -->
+    <!-- Underline indicator -->
     <View
         android:id="@+id/tab_indicator"
         android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_marginTop="2dp"
-        android:background="@color/tab_indicator"
-        app:layout_constraintTop_toBottomOf="@id/comms_tab_group"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:background="@color/accent"
+        app:layout_constraintTop_toBottomOf="@id/tab_row"
+        app:layout_constraintStart_toStartOf="@id/tab_row" />
 
-    <!-- Fragment container -->
+    <!-- Page container -->
     <FrameLayout
         android:id="@+id/comms_fragment_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/tab_indicator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout="@layout/fragment_chat" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
