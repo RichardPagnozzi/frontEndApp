@@ -1,4 +1,4 @@
-package com.example.skybox_frontend.ui.comms;
+package com.example.skybox_frontend.ui.comms.view;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -77,7 +77,8 @@ public class ChatFragment extends Fragment implements ContactAdapter.OnContactCl
 
     // Click handlers for other buttons
     private void onAddContactClicked(View v) {
-        Log.d(TAG, "Add Contact clicked");
+        AddEditContactDialogFragment dialog = AddEditContactDialogFragment.newInstance(null);
+        dialog.show(getParentFragmentManager(), "AddContact");
     }
 
     private void onAddGroupClicked(View v) {

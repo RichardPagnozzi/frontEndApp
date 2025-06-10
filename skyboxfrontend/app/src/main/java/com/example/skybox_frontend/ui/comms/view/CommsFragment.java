@@ -1,4 +1,4 @@
-package com.example.skybox_frontend.ui.comms;
+package com.example.skybox_frontend.ui.comms.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

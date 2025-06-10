@@ -1,12 +1,7 @@
 package com.example.skybox_frontend;
 
-import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewConfiguration;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 
 import com.example.skybox_frontend.databinding.ActivityMainBinding;
-import com.example.skybox_frontend.ui.comms.CommsFragment;
+import com.example.skybox_frontend.ui.comms.view.CommsFragment;
 import com.example.skybox_frontend.ui.login.LoginFragment;
 import com.example.skybox_frontend.ui.map.MapFragment;
 import com.example.skybox_frontend.ui.operations.OperationsFragment;

@@ -1,4 +1,4 @@
-package com.example.skybox_frontend.ui.comms;
+package com.example.skybox_frontend.ui.comms.view;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -16,6 +16,10 @@ import com.example.skybox_frontend.ui.comms.model.Contact;
 
 import java.util.List;
 
+
+// Take a Contact (the model)
+// Bind its data into a visible UI (ViewHolder)
+// Respond to user clicks (event forwarding)
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHolder> {
 
     private final Context context;

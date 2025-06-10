@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/bg_card_rounded"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/input_callsign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:hint="Callsign"
+        android:textColor="@color/primary_text"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/input_ip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:hint="IP Address"
+        android:textColor="@color/primary_text"
+        android:inputType="text" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="Save"
+        android:layout_marginTop="16dp"
+        app:cornerRadius="12dp"
+        app:backgroundTint="@color/accent"
+        android:textColor="@color/text_on_accent" />
+</LinearLayout>

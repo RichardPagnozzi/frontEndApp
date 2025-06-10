@@ -1,4 +1,4 @@
-package com.example.skybox_frontend.ui.comms;
+package com.example.skybox_frontend.ui.comms.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.skybox_frontend.R;
 
-public class ChatBotFragment extends Fragment {
+public class VoiceFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_chatbot, container, false);
+        return inflater.inflate(R.layout.fragment_voice, container, false);
     }
 }
