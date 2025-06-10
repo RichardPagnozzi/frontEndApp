@@ -14,16 +14,15 @@ import java.util.List;
  */
 public class CommsRepository {
 
-    // 🔧 Singleton instance
+    // Singleton instance
     private static CommsRepository instance;
 
-    // 🗂 Internal backing list for contacts
+    // Internal list for contacts
     private final MutableLiveData<List<Contact>> contactsLiveData = new MutableLiveData<>(new ArrayList<>());
 
-    // 🛠 Private constructor
     private CommsRepository() {}
 
-    // 🎯 Global access point
+    // Access point
     public static CommsRepository getInstance() {
         if (instance == null) {
             instance = new CommsRepository();
@@ -31,7 +30,8 @@ public class CommsRepository {
         return instance;
     }
 
-    // 🧠 Add a new contact
+    // Public Methods
+
     public void addContact(Contact contact) {
         List<Contact> current = contactsLiveData.getValue();
         if (current == null) current = new ArrayList<>();
@@ -40,7 +40,6 @@ public class CommsRepository {
         contactsLiveData.setValue(current);
     }
 
-    // 🔁 Update existing contact by index (optional for edit feature)
     public void updateContact(int index, Contact updatedContact) {
         List<Contact> current = contactsLiveData.getValue();
         if (current != null && index >= 0 && index < current.size()) {
@@ -49,15 +48,11 @@ public class CommsRepository {
         }
     }
 
-    // 🧾 Expose immutable contact list
     public LiveData<List<Contact>> getContacts() {
         return contactsLiveData;
     }
 
-    // 🚫 Clear contacts (for debug/testing)
     public void clearContacts() {
         contactsLiveData.setValue(new ArrayList<>());
     }
-
-    // 🔮 TODO: Add message handling, voice state, etc. in future
 }
