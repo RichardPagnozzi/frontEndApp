@@ -76,6 +76,12 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         return contacts.size();
     }
 
+    public void updateContacts(List<Contact> newContacts) {
+        contacts.clear();
+        contacts.addAll(newContacts);
+        notifyDataSetChanged();
+    }
+
     static class ContactViewHolder extends RecyclerView.ViewHolder {
         TextView textInitials;
 

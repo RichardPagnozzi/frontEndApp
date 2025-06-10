@@ -1,6 +1,8 @@
 package com.example.skybox_frontend.ui.comms.model;
 
-public class Contact {
+import java.io.Serializable;
+
+public class Contact implements Serializable {
     private String callsign;
     private String ip;
     private String colorHex;

@@ -19,6 +19,7 @@ import com.example.skybox_frontend.R;
 import com.example.skybox_frontend.ui.comms.model.Contact;
 import com.example.skybox_frontend.ui.comms.viewmodel.CommsViewModel;
 
+import java.util.List;
 import java.util.Random;
 
 public class AddEditContactDialogFragment extends DialogFragment {
@@ -26,28 +27,28 @@ public class AddEditContactDialogFragment extends DialogFragment {
     private EditText inputCallsign;
     private EditText inputIp;
     private Button btnSave;
-
     private boolean isEditMode = false;
+    private static final String ARG_CONTACT = "contact";
+    private Contact existingContact;
 
     private CommsViewModel viewModel;
+
+    public static AddEditContactDialogFragment newInstance(@Nullable Contact contact) {
+        AddEditContactDialogFragment fragment = new AddEditContactDialogFragment();
+        Bundle args = new Bundle();
+        if (contact != null) {
+            args.putSerializable(ARG_CONTACT, contact);
+        }
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     private String getRandomColorHex() {
         Random random = new Random();
         int red = random.nextInt(256);
         int green = random.nextInt(256);
         int blue = random.nextInt(256);
         return String.format("#%02X%02X%02X", red, green, blue);
-    }
-
-    public static AddEditContactDialogFragment newInstance(@Nullable Contact contact) {
-        AddEditContactDialogFragment fragment = new AddEditContactDialogFragment();
-        Bundle args = new Bundle();
-        if (contact != null) {
-            args.putString("callsign", contact.getCallsign());
-            args.putString("ip", contact.getIp());
-            args.putString("color", contact.getColorHex());
-        }
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -66,7 +67,11 @@ public class AddEditContactDialogFragment extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(DialogFragment.STYLE_NO_FRAME, R.style.CustomDialogStyle);
+        if (getArguments() != null) {
+            existingContact = (Contact) getArguments().getSerializable(ARG_CONTACT);
+            isEditMode = existingContact != null;
+        }
+        setStyle(STYLE_NORMAL, R.style.CustomDialogStyle);
     }
 
     @Nullable
@@ -83,12 +88,10 @@ public class AddEditContactDialogFragment extends DialogFragment {
 
         viewModel = new ViewModelProvider(requireActivity()).get(CommsViewModel.class);
 
-        // Check for edit mode
-        Bundle args = getArguments();
-        if (args != null && args.containsKey("callsign")) {
-            isEditMode = true;
-            inputCallsign.setText(args.getString("callsign"));
-            inputIp.setText(args.getString("ip"));
+        // If editing, populate fields and update button text
+        if (isEditMode && existingContact != null) {
+            inputCallsign.setText(existingContact.getCallsign());
+            inputIp.setText(existingContact.getIp());
             btnSave.setText("Update");
         }
 
@@ -110,12 +113,21 @@ public class AddEditContactDialogFragment extends DialogFragment {
             return;
         }
 
-        Contact contact = new Contact(callsign, ip, getRandomColorHex());
+        Contact newContact = new Contact(callsign, ip,
+                isEditMode ? existingContact.getColorHex() : getRandomColorHex());
 
         if (isEditMode) {
-            Toast.makeText(requireContext(), "Edit mode not yet implemented", Toast.LENGTH_SHORT).show();
+            List<Contact> currentList = viewModel.getContacts().getValue();
+            if (currentList != null) {
+                int index = currentList.indexOf(existingContact);
+                if (index != -1) {
+                    viewModel.updateContact(index, newContact);
+                } else {
+                    Toast.makeText(requireContext(), "Could not update contact", Toast.LENGTH_SHORT).show();
+                }
+            }
         } else {
-            viewModel.addContact(contact);
+            viewModel.addContact(newContact);
         }
 
         dismiss();

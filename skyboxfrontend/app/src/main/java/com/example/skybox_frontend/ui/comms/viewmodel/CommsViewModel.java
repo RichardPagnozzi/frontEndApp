@@ -8,10 +8,6 @@ import com.example.skybox_frontend.ui.comms.repository.CommsRepository;
 
 import java.util.List;
 
-/**
- * ViewModel for the Comms feature.
- * Acts as the bridge between the UI and the repository.
- */
 public class CommsViewModel extends ViewModel {
 
     private final CommsRepository repository = CommsRepository.getInstance();
