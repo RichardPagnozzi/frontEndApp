@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
     android:foreground="?attr/selectableItemBackground"
-    android:padding="4dp">
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="2dp"
+    android:elevation="1dp"
+    android:layout_gravity="center_horizontal">
 
     <TextView
         android:id="@+id/textInitials"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
         android:gravity="center"
         android:layout_gravity="center"
         android:textColor="@color/text_on_accent"
-        android:textSize="10sp"
-        android:textStyle="bold" />
+        android:textSize="9sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.03"
+        android:elevation="1dp"
+        android:outlineProvider="background"
+        android:clipToOutline="true"
+        android:translationZ="1dp" />
 </FrameLayout>

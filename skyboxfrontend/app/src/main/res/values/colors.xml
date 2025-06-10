@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- 🌑 Base Theme -->
+    <!-- Base Theme -->
     <color name="background">#0B0F1A</color>          <!-- Deep Space -->
     <color name="surface">#1A1F2B</color>             <!-- Stealth Indigo -->
     <color name="primary_text">#C5C9D1</color>        <!-- Tactical Gray -->
@@ -9,25 +9,25 @@
     <color name="secondary">#5E748D</color>           <!-- Signal Blue -->
     <color name="text_on_accent">#0B0F1A</color>      <!-- Deep Navy -->
 
-    <!-- ✨ Glow Gradient -->
+    <!-- Glow Gradient -->
     <color name="glow_start">#0B0F1A</color>          <!-- Deep Space -->
     <color name="glow_center">#3DAEFF</color>         <!-- HUD Blue -->
     <color name="glow_end">#0B0F1A</color>            <!-- Deep Space -->
 
-    <!-- 🟦 Diagonal Gradient -->
+    <!-- Diagonal Gradient -->
     <color name="diagonal_start">#0B0F1A</color>      <!-- Deep Space -->
     <color name="diagonal_end">#1A1F2B</color>        <!-- Stealth Indigo -->
     <color name="diagonal_overlay">#12202F</color>    <!-- Custom low-glow cyan -->
 
-    <!-- 📶 Signal Gradient -->
+    <!-- Signal Gradient -->
     <color name="signal_start">#5E748D</color>        <!-- Signal Blue -->
     <color name="signal_end">#1A1F2B</color>          <!-- Stealth Indigo -->
 
-    <!-- ⬇️ Vertical Background Gradient -->
+    <!-- ⬇Vertical Background Gradient -->
     <color name="vertical_start">#1A1F2B</color>      <!-- Stealth Indigo -->
     <color name="vertical_end">#0B0F1A</color>        <!-- Deep Space -->
 
-    <!-- 🫥 Low Energy Accent (for passive UI) -->
+    <!-- Low Energy Accent -->
     <color name="low_energy_end">#273444</color>      <!-- Custom desaturated blue -->
 
 </resources>

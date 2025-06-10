@@ -30,13 +30,55 @@ public class CommsRepository {
         return instance;
     }
 
-    // Public Methods
+    // Private Methods
+    private void sortContacts(List<Contact> list) {
+        list.sort((a, b) -> Boolean.compare(b.getIsPinned(), a.getIsPinned()));
+    }
 
+    public void togglePin(Contact target) {
+        List<Contact> current = contactsLiveData.getValue();
+        if (current == null) return;
+
+        // Find target index
+        int index = current.indexOf(target);
+        if (index == -1) return;
+
+        boolean shouldPin = !target.getIsPinned();
+
+        if (shouldPin) {
+            // Count current pinned contacts
+            long pinnedCount = current.stream().filter(Contact::getIsPinned).count();
+
+            if (pinnedCount >= 3) {
+                // Find the last pinned contact
+                for (int i = current.size() - 1; i >= 0; i--) {
+                    if (current.get(i).getIsPinned()) {
+                        current.get(i).setIsPinned(false);
+                        break;
+                    }
+                }
+            }
+
+            target.setIsPinned(true);
+
+        } else {
+            //  unpin
+            target.setIsPinned(false);
+        }
+
+        sortContacts(current);
+        contactsLiveData.setValue(current);
+    }
+
+
+
+    // Public Methods
     public void addContact(Contact contact) {
         List<Contact> current = contactsLiveData.getValue();
         if (current == null) current = new ArrayList<>();
 
         current.add(contact);
+        sortContacts(current);
         contactsLiveData.setValue(current);
     }
 
@@ -44,6 +86,7 @@ public class CommsRepository {
         List<Contact> current = contactsLiveData.getValue();
         if (current != null && index >= 0 && index < current.size()) {
             current.set(index, updatedContact);
+            sortContacts(current);
             contactsLiveData.setValue(current);
         }
     }

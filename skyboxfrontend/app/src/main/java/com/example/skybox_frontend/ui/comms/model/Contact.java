@@ -6,6 +6,8 @@ public class Contact implements Serializable {
     private String callsign;
     private String ip;
     private String colorHex;
+    private boolean isPinned = false;
+
 
     public Contact(String callsign, String ip, String colorHex) {
         this.callsign = callsign;
@@ -26,6 +28,11 @@ public class Contact implements Serializable {
         return colorHex;
     }
 
+    public boolean getIsPinned() {
+        return isPinned;
+    }
+
+
     // Setters
     public void setCallsign(String callsign) {
         this.callsign = callsign;
@@ -37,5 +44,9 @@ public class Contact implements Serializable {
 
     public void setColorHex(String colorHex) {
         this.colorHex = colorHex;
+    }
+
+    public void setIsPinned(boolean pinned) {
+        this.isPinned = pinned;
     }
 }

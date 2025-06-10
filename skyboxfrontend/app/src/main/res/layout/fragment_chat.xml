@@ -15,13 +15,14 @@
         android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:elevation="2dp"
-        android:gravity="top"
         android:orientation="vertical"
         android:padding="8dp"
+        android:gravity="top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!-- Add Contact button -->
         <ImageButton
             android:id="@+id/btn_add_contact"
             android:layout_width="match_parent"
@@ -32,6 +33,7 @@
             android:src="@drawable/ic_person_add"
             app:tint="@color/accent" />
 
+        <!-- Add Group button -->
         <ImageButton
             android:id="@+id/btn_add_group"
             android:layout_width="match_parent"
@@ -42,6 +44,7 @@
             android:src="@drawable/ic_group_add"
             app:tint="@color/accent" />
 
+        <!-- ADA Bot button -->
         <ImageButton
             android:id="@+id/btn_select_ada"
             android:layout_width="match_parent"
@@ -52,20 +55,28 @@
             android:src="@drawable/ic_robot"
             app:tint="@color/accent" />
 
+        <!-- Divider -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/secondary" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/sidebar_list"
+        <!-- FrameLayout to center pills vertically -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp" />
+            android:foregroundGravity="center_vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/sidebar_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp" />
+        </FrameLayout>
     </LinearLayout>
 
     <!-- Chat Messages -->
@@ -94,6 +105,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/sidebar_container">
 
+        <!-- Voice Mode button -->
         <ImageButton
             android:id="@+id/btn_voice"
             android:layout_width="wrap_content"
@@ -104,6 +116,7 @@
             android:src="@drawable/ic_mic_on"
             app:tint="@color/accent" />
 
+        <!-- Chat input -->
         <EditText
             android:id="@+id/chatInput"
             android:layout_width="0dp"
@@ -116,6 +129,7 @@
             android:textColor="@color/primary_text"
             android:textColorHint="@color/secondary" />
 
+        <!-- Send button -->
         <ImageButton
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"

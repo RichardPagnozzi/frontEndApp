@@ -25,6 +25,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     // Interface to delegate click events to the host fragment
     public interface OnContactClickListener {
         void onContactClick(Contact contact);
+        void onContactLongClick(Contact contact);
     }
 
     private final OnContactClickListener clickListener;
@@ -60,6 +61,9 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             // Fallback to gray if the color hex is invalid
             bgShape.setColor(Color.GRAY);
         }
+        if (contact.getIsPinned()) {
+            bgShape.setStroke(4, Color.WHITE);
+        }
         holder.textInitials.setBackground(bgShape);
 
         // Register click listener for the contact pill
@@ -67,6 +71,14 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             if (clickListener != null) {
                 clickListener.onContactClick(contact);
             }
+        });
+
+        // Register long click listener for contact pill
+        holder.itemView.setOnLongClickListener(v -> {
+            if (clickListener != null) {
+                clickListener.onContactLongClick(contact);
+            }
+            return true;
         });
     }
 

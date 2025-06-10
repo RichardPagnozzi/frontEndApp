@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import com.example.skybox_frontend.ui.comms.viewmodel.CommsViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.skybox_frontend.R;
 import com.example.skybox_frontend.ui.comms.model.Contact;
+import com.example.skybox_frontend.ui.comms.viewmodel.CommsViewModel;
 
 import java.util.ArrayList;
 
@@ -71,6 +71,13 @@ public class ChatFragment extends Fragment implements ContactAdapter.OnContactCl
         AddEditContactDialogFragment dialog = AddEditContactDialogFragment.newInstance(contact);
         dialog.show(getParentFragmentManager(), "EditContact");
         // TODO: Load messages or open chat window here
+    }
+
+    // Called by adapter when user long-presses a contact
+    @Override
+    public void onContactLongClick(Contact contact) {
+        viewModel.togglePin(contact); // Tells repository to handle pin/unpin logic
+        Log.d(TAG, contact.getCallsign() + " pin toggled");
     }
 
     // On-Click Handlers
