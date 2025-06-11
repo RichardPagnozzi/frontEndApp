@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,9 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.skybox_frontend.R;
 import com.example.skybox_frontend.ui.comms.model.Contact;
+import com.example.skybox_frontend.ui.comms.model.Message;
 import com.example.skybox_frontend.ui.comms.viewmodel.CommsViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ChatFragment extends Fragment implements ContactAdapter.OnContactClickListener {
     private static final String TAG = "ChatFragment";
@@ -28,6 +31,9 @@ public class ChatFragment extends Fragment implements ContactAdapter.OnContactCl
     private ImageButton btnVoice;
     private ImageButton btnSend;
     private RecyclerView sidebarList;
+    private RecyclerView chatRecyclerView;
+    private TextView emptyMessageText;
+    private MessageAdapter messageAdapter;
     private CommsViewModel viewModel;
 
     @Nullable
@@ -50,30 +56,56 @@ public class ChatFragment extends Fragment implements ContactAdapter.OnContactCl
         btnVoice.setOnClickListener(this::onVoiceClicked);
         btnSend.setOnClickListener(this::onSendClicked);
 
-        // Setup RecyclerView with empty list initially
+        // Setup Contacts
         sidebarList = view.findViewById(R.id.sidebar_list);
         sidebarList.setLayoutManager(new LinearLayoutManager(requireContext()));
-
         ContactAdapter contactAdapter = new ContactAdapter(requireContext(), new ArrayList<>(), this);
         sidebarList.setAdapter(contactAdapter);
+
+        // Setup Messages
+        chatRecyclerView = view.findViewById(R.id.chatRecyclerView);
+        emptyMessageText = view.findViewById(R.id.emptyMessageText);
+        messageAdapter = new MessageAdapter(new ArrayList<>());
+        chatRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        chatRecyclerView.setAdapter(messageAdapter);
 
         // Live update UI when contacts change
         viewModel.getContacts().observe(getViewLifecycleOwner(), contacts -> {
             contactAdapter.updateContacts(contacts);
         });
 
+        // Observe the currently selected contact and update message view
+        viewModel.getSelectedContact().observe(getViewLifecycleOwner(), contact -> {
+            if (contact == null || contact.getThread() == null) {
+                showEmptyMessage(true);
+                return;
+            }
+
+            List<Message> messages = contact.getThread().getMessages();
+            if (messages == null || messages.isEmpty()) {
+                showEmptyMessage(true);
+            } else {
+                showEmptyMessage(false);
+                messageAdapter.updateMessages(messages);
+                chatRecyclerView.scrollToPosition(messages.size() - 1); // Scroll to latest message
+            }
+        });
+
         return view;
     }
 
-    // Called by adapter when user clicks a contact
+    // Short Press Contact: Called by adapter
     @Override
     public void onContactClick(Contact contact) {
-        AddEditContactDialogFragment dialog = AddEditContactDialogFragment.newInstance(contact);
-        dialog.show(getParentFragmentManager(), "EditContact");
-        // TODO: Load messages or open chat window here
+        // This brings up the edit contact menu - commented out while experimenting with UX
+        // AddEditContactDialogFragment dialog = AddEditContactDialogFragment.newInstance(contact);
+        // dialog.show(getParentFragmentManager(), "EditContact");
+
+        viewModel.setSelectedContact(contact);
+        Log.d(TAG, contact.getCallsign());
     }
 
-    // Called by adapter when user long-presses a contact
+    // Long Press Contact: Called by adapter
     @Override
     public void onContactLongClick(Contact contact) {
         viewModel.togglePin(contact); // Tells repository to handle pin/unpin logic
@@ -100,5 +132,13 @@ public class ChatFragment extends Fragment implements ContactAdapter.OnContactCl
 
     private void onSendClicked(View v) {
         Log.d(TAG, "Send Message clicked");
+    }
+
+    // Utility: Toggles placeholder message if no history exists
+    private void showEmptyMessage(boolean show) {
+        if (emptyMessageText != null && chatRecyclerView != null) {
+            emptyMessageText.setVisibility(show ? View.VISIBLE : View.GONE);
+            chatRecyclerView.setVisibility(show ? View.GONE : View.VISIBLE);
+        }
     }
 }

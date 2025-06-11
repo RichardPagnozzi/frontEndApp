@@ -30,7 +30,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
     private final OnContactClickListener clickListener;
 
-    // Constructor injects context, list of contacts, and a click listener
+    // Constructor
     public ContactAdapter(Context context, List<Contact> contactList, OnContactClickListener clickListener) {
         this.context = context;
         this.contacts = contactList;

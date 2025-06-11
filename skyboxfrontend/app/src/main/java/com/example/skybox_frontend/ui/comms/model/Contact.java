@@ -3,6 +3,7 @@ package com.example.skybox_frontend.ui.comms.model;
 import java.io.Serializable;
 
 public class Contact implements Serializable {
+    private final MessageThread thread = new MessageThread();
     private String callsign;
     private String ip;
     private String colorHex;
@@ -32,6 +33,7 @@ public class Contact implements Serializable {
         return isPinned;
     }
 
+    public MessageThread getThread() {return thread;}
 
     // Setters
     public void setCallsign(String callsign) {
