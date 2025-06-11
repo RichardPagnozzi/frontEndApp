@@ -35,7 +35,7 @@ public class CommsRepository {
         list.sort((a, b) -> Boolean.compare(b.getIsPinned(), a.getIsPinned()));
     }
 
-    public void togglePin(Contact target) {
+    public void togglePin(Contact target)  {
         List<Contact> current = contactsLiveData.getValue();
         if (current == null) return;
 
