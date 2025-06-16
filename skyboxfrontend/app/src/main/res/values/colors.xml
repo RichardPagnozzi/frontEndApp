@@ -16,8 +16,8 @@
 
     <!-- Diagonal Gradient -->
     <color name="diagonal_start">#0B0F1A</color>      <!-- Deep Space -->
-    <color name="diagonal_end">#1A1F2B</color>        <!-- Stealth Indigo -->
-    <color name="diagonal_overlay">#12202F</color>    <!-- Custom low-glow cyan -->
+    <color name="diagonal_end">#050505</color>        <!-- Stealth Indigo -->
+    <color name="diagonal_overlay">#0B0F1A</color>    <!-- Custom low-glow cyan -->
 
     <!-- Signal Gradient -->
     <color name="signal_start">#5E748D</color>        <!-- Signal Blue -->

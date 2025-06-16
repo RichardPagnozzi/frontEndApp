@@ -8,7 +8,7 @@ public class LoginViewModel extends ViewModel {
 
     // Observable which can be watched by UI for changes
     // Locally mutable, but globally immutable to outside world (only GetLoginTitle() is exposed)
-    private final MutableLiveData<String> loginTitle = new MutableLiveData<>("Authentication");
+    private final MutableLiveData<String> loginTitle = new MutableLiveData<>("SKYBOX Authentication");
     private final MutableLiveData<Boolean> loginSuccess = new MutableLiveData<>();
 
     // Exposed as read-only LiveData to the view

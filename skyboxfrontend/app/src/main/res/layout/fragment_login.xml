@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient_diagnol"
+    android:background="@drawable/bg_gradient_vertical"
     tools:context=".ui.login.LoginFragment">
 
-    <!-- Split container: left logo, right login -->
+    <!-- Vertical split guideline -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_split"
         android:layout_width="wrap_content"
@@ -22,72 +21,73 @@
         android:id="@+id/logo_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_marginStart="32dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_split"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/app_logo"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@android:drawable/ic_menu_compass"
-            android:tint="@color/accent" />
-
-        <TextView
-            android:id="@+id/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Skybox"
-            android:textColor="@color/primary_text"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginTop="12dp" />
+            android:contentDescription="app_logo"
+            android:src="@drawable/bg_logo_transparent"
+            app:tint="#8CFFFFFF" />
+
     </LinearLayout>
 
-    <!-- Right login form -->
+    <!-- Divider line -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="2dp"
+        android:layout_height="350dp"
+        android:background="@color/accent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical_split"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Right form area -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/form_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="24dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_split"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Login Title -->
+        <!-- Title -->
         <TextView
             android:id="@+id/login_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Log In"
-            android:textColor="@color/primary_text"
-            android:textSize="28sp"
-            android:textStyle="bold"
             android:gravity="center"
             android:letterSpacing="0.05"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="Skybox"
+            android:textColor="#8CFFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Call-sign Input -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/callsign_layout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:hint="@string/callsign"
-            android:textColorHint="@color/secondary"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/secondary"
             app:boxBackgroundColor="@android:color/transparent"
-            app:layout_constraintTop_toBottomOf="@id/login_title"
-            app:layout_constraintStart_toStartOf="parent"
+            app:boxStrokeColor="@color/secondary"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_title">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/callsign_input"
@@ -99,48 +99,46 @@
         <!-- Chat IP Input -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/chat_ip_layout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:hint="@string/chat_ip"
-            android:textColorHint="@color/secondary"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/accent"
             app:boxBackgroundColor="@android:color/transparent"
-            app:layout_constraintTop_toBottomOf="@id/callsign_layout"
-            app:layout_constraintStart_toStartOf="parent"
+            app:boxStrokeColor="@color/accent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="12dp">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/callsign_layout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/chat_ip_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/primary_text"
-                android:inputType="textUri" />
+                android:inputType="textUri"
+                android:textColor="@color/primary_text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Password Input -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_layout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:hint="@string/password"
-            android:textColorHint="@color/secondary"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            app:boxBackgroundColor="@android:color/transparent"
             app:boxStrokeColor="@color/accent"
             app:endIconMode="password_toggle"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:layout_constraintTop_toBottomOf="@id/chat_ip_layout"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="12dp">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chat_ip_layout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/primary_text"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="@color/primary_text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Login Button -->
@@ -148,15 +146,30 @@
             android:id="@+id/login_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/accent"
             android:text="@string/login"
             android:textAllCaps="false"
             android:textColor="@color/text_on_accent"
             app:cornerRadius="12dp"
-            app:layout_constraintTop_toBottomOf="@id/password_layout"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

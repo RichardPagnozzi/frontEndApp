@@ -27,7 +27,6 @@ public class ChatFragment extends Fragment implements ContactAdapter.OnContactCl
     private static final String TAG = "ChatFragment";
     private ImageButton btnAddContact;
     private ImageButton btnAddGroup;
-    private ImageButton btnSelectAda;
     private ImageButton btnVoice;
     private ImageButton btnSend;
     private RecyclerView sidebarList;
@@ -45,14 +44,12 @@ public class ChatFragment extends Fragment implements ContactAdapter.OnContactCl
         // Button references
         btnAddContact = view.findViewById(R.id.btn_add_contact);
         btnAddGroup = view.findViewById(R.id.btn_add_group);
-        btnSelectAda = view.findViewById(R.id.btn_select_ada);
         btnVoice = view.findViewById(R.id.btn_voice);
         btnSend = view.findViewById(R.id.sendButton);
 
         // Button click subscriptions
         btnAddContact.setOnClickListener(this::onAddContactClicked);
         btnAddGroup.setOnClickListener(this::onAddGroupClicked);
-        btnSelectAda.setOnClickListener(this::onSelectAdaClicked);
         btnVoice.setOnClickListener(this::onVoiceClicked);
         btnSend.setOnClickListener(this::onSendClicked);
 
@@ -120,10 +117,6 @@ public class ChatFragment extends Fragment implements ContactAdapter.OnContactCl
 
     private void onAddGroupClicked(View v) {
         Log.d(TAG, "Add Group clicked");
-    }
-
-    private void onSelectAdaClicked(View v) {
-        Log.d(TAG, "Select ADA Bot clicked");
     }
 
     private void onVoiceClicked(View v) {
