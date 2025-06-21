@@ -19,24 +19,34 @@ public class VoiceViewModel extends ViewModel {
         return callState;
     }
 
+    // Start a call with provided callsign and IP. If valid, move to RINGING state.
     public void startCall(String callsign, String ip) {
-        if (callsign == null || callsign.isEmpty() || ip == null || ip.isEmpty()) {
-            // Invalid input, stay in IDLE (you could expose an error LiveData if needed)
-            return;
+        if (isValidInput(callsign, ip)) {
+            callState.setValue(CallState.RINGING);
+        } else {
+            // Stay in IDLE, or optionally expose an error LiveData
         }
-        callState.setValue(CallState.RINGING);
-        // You can later add logic to move to CONNECTED, TIMED_OUT, etc.
     }
 
+    // Simulate a successful connection (mock backend connect)
+    public void mockConnect() {
+        callState.setValue(CallState.CONNECTED);
+    }
+
+    // Simulate a timeout (mock backend no-answer)
+
+    public void mockTimeout() {
+        callState.setValue(CallState.TIMED_OUT);
+    }
+
+    // End the current call and reset state
     public void endCall() {
         callState.setValue(CallState.IDLE);
     }
 
-    public void timeoutCall() {
-        callState.setValue(CallState.TIMED_OUT);
-    }
-
-    public void connectCall() {
-        callState.setValue(CallState.CONNECTED);
+    // Basic validation: non-empty callsign + IP
+    private boolean isValidInput(String callsign, String ip) {
+        return callsign != null && !callsign.isEmpty()
+                && ip != null && !ip.isEmpty();
     }
 }
