@@ -1,0 +1,13 @@
+<!-- res/drawable/bg_status_circle.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <size android:width="8dp" android:height="8dp"/>
+    <gradient
+        android:type="radial"
+        android:centerX="50%"
+        android:centerY="50%"
+        android:gradientRadius="4dp"
+        android:startColor="#BBED93"
+    android:centerColor="#8BC34A"
+    android:endColor="#25420A"
+    android:useLevel="false" />
+</shape>

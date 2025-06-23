@@ -9,6 +9,11 @@
     <color name="secondary">#5E748D</color>           <!-- Signal Blue -->
     <color name="text_on_accent">#0B0F1A</color>      <!-- Deep Navy -->
 
+    <!-- Status Colors -->
+    <color name="status_red">#FF4444</color>          <!-- Android Holo Red -->
+    <color name="status_green">#FF99CC00</color>        <!-- Android Holo Red -->
+
+    <!-- GRADIENTS -->
     <!-- Glow Gradient -->
     <color name="glow_start">#0B0F1A</color>          <!-- Deep Space -->
     <color name="glow_center">#3DAEFF</color>         <!-- HUD Blue -->
@@ -29,5 +34,8 @@
 
     <!-- Low Energy Accent -->
     <color name="low_energy_end">#273444</color>      <!-- Custom desaturated blue -->
+
+
+
 
 </resources>

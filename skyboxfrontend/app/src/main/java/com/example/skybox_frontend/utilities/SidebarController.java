@@ -6,9 +6,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 
-/**
- * Manages sidebar dragging and snapping behavior.
- */
+// Sidebar, swipe menu for Comms, Map, Operations and Trivia
 public class SidebarController {
 
     // <editor-fold desc="Members">

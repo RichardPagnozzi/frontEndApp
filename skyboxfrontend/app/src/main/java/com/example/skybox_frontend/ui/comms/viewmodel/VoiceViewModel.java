@@ -21,11 +21,7 @@ public class VoiceViewModel extends ViewModel {
 
     // Start a call with provided callsign and IP. If valid, move to RINGING state.
     public void startCall(String callsign, String ip) {
-        if (isValidInput(callsign, ip)) {
-            callState.setValue(CallState.RINGING);
-        } else {
-            // Stay in IDLE, or optionally expose an error LiveData
-        }
+        callState.setValue(CallState.RINGING);
     }
 
     // Simulate a successful connection (mock backend connect)
