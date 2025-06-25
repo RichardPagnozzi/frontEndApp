@@ -8,6 +8,7 @@
     <color name="accent">#3DAEFF</color>              <!-- HUD Blue -->
     <color name="secondary">#5E748D</color>           <!-- Signal Blue -->
     <color name="text_on_accent">#0B0F1A</color>      <!-- Deep Navy -->
+    <color name="transparent">#00FFFFFF</color>         <!-- Transparent -->
 
     <!-- Status Colors -->
     <color name="status_red">#FF4444</color>          <!-- Android Holo Red -->

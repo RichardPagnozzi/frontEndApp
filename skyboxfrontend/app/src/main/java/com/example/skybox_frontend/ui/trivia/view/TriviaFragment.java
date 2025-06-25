@@ -4,7 +4,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +20,12 @@ public class TriviaFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        // Load the default child fragment
+        // If it's the first time, show the mode selection fragment
         if (savedInstanceState == null) {
-            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-            transaction.replace(R.id.trivia_fragment_container, new ModeSelectFragment());
-            transaction.commit();
+            getChildFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.trivia_fragment_container, new ModeSelectFragment())
+                    .commit();
         }
     }
 }

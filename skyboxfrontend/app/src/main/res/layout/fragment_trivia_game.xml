@@ -1,25 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/trivia_game_root"
+    android:id="@+id/gameplay_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient_diagnol"
-    android:padding="24dp">
+    android:padding="16dp"
+    android:background="@drawable/bg_gradient_diagnol">
 
-    <!-- Placeholder Text -->
+    <!-- Background Dots -->
+    <ImageView
+        android:id="@+id/triviaIcon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="Trivia Icon"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_dots"
+        android:adjustViewBounds="true"
+        app:tint="#36FFFFFF" />
+
+    <!-- Top Bar -->
     <TextView
-        android:id="@+id/gamePlaceholderText"
+        android:id="@+id/gameModeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trivia Game Screen"
-        android:textSize="22sp"
+        android:text="CLASSIC"
+        android:textAllCaps="true"
         android:textColor="@color/primary_text"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/accent"
+        android:paddingHorizontal="20dp"
+        android:text="Next"
+        android:textColor="@color/text_on_accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Score Indicator -->
+    <TextView
+        android:id="@+id/scoreCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Score: 0"
+        android:textColor="@color/accent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gameModeTitle" />
+
+    <!-- Question Box -->
+    <FrameLayout
+        android:id="@+id/questionContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_description_chat_bubble"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@id/answerGrid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scoreCounter">
+
+        <TextView
+            android:id="@+id/questionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This is a placeholder question, do you like it?"
+            android:textAlignment="center"
+            android:textColor="@color/primary_text"
+            android:textSize="18sp" />
+    </FrameLayout>
+
+    <!-- Answer Grid (2x2) -->
+    <GridLayout
+        android:id="@+id/answerGrid"
+        android:background="@color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:padding="10dp"
+        android:rowCount="2"
+        android:useDefaultMargins="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnOptionA"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:backgroundTint="@color/accent"
+            android:minWidth="0dp"
+            android:text="A. Definitely"
+            android:textColor="@color/text_on_accent" />
+
+        <Button
+            android:id="@+id/btnOptionB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:backgroundTint="@color/accent"
+            android:minWidth="0dp"
+            android:text="B. Sort of"
+            android:textColor="@color/text_on_accent" />
+
+        <Button
+            android:id="@+id/btnOptionC"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:backgroundTint="@color/accent"
+            android:minWidth="0dp"
+            android:text="C. Not really"
+            android:textColor="@color/text_on_accent" />
+
+        <Button
+            android:id="@+id/btnOptionD"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:backgroundTint="@color/accent"
+            android:minWidth="0dp"
+            android:text="D. Hate it"
+            android:textColor="@color/text_on_accent" />
+    </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

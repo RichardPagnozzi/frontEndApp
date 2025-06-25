@@ -4,7 +4,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.example.skybox_frontend.R;
 import com.example.skybox_frontend.ui.trivia.model.TriviaGameModes;
 
-// Displays the selected mode’s info
 public class ModeDescriptionFragment extends Fragment {
 
     private static final String ARG_GAME_MODE = "arg_game_mode";
@@ -65,8 +64,13 @@ public class ModeDescriptionFragment extends Fragment {
         btnBack.setOnClickListener(v -> requireActivity().onBackPressed());
 
         btnPlay.setOnClickListener(v -> {
-            // TODO: Navigate to game screen specific to selected gameMode
-            // Example: navigateToGame(gameMode);
+            Fragment gameplayFragment = new GameplayFragment();
+            FragmentTransaction transaction = requireActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction();
+            transaction.replace(R.id.trivia_fragment_container, gameplayFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         });
     }
 }
