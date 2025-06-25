@@ -13,7 +13,7 @@ import com.example.skybox_frontend.ui.comms.view.CommsFragment;
 import com.example.skybox_frontend.ui.login.LoginFragment;
 import com.example.skybox_frontend.ui.map.MapFragment;
 import com.example.skybox_frontend.ui.operations.OperationsFragment;
-import com.example.skybox_frontend.ui.trivia.TriviaFragment;
+import com.example.skybox_frontend.ui.trivia.view.TriviaFragment;
 import com.example.skybox_frontend.utilities.SidebarController;
 import com.google.android.material.button.MaterialButton;
 
