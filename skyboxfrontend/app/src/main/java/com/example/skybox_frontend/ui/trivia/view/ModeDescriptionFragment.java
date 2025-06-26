@@ -5,6 +5,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +15,13 @@ import android.widget.TextView;
 
 import com.example.skybox_frontend.R;
 import com.example.skybox_frontend.ui.trivia.model.TriviaGameModes;
+import com.example.skybox_frontend.ui.trivia.viewmodel.TriviaViewModel;
 
 public class ModeDescriptionFragment extends Fragment {
 
     private static final String ARG_GAME_MODE = "arg_game_mode";
     private TriviaGameModes gameMode;
+    private TriviaViewModel viewModel;
 
     public static ModeDescriptionFragment newInstance(TriviaGameModes mode) {
         ModeDescriptionFragment fragment = new ModeDescriptionFragment();
@@ -30,9 +34,14 @@ public class ModeDescriptionFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(requireActivity()).get(TriviaViewModel.class);
+
         if (getArguments() != null) {
             String modeName = getArguments().getString(ARG_GAME_MODE);
             gameMode = TriviaGameModes.valueOf(modeName);
+
+            // Set the selected mode early so ViewModel logic knows it
+            viewModel.selectMode(gameMode);
         }
     }
 
@@ -51,7 +60,10 @@ public class ModeDescriptionFragment extends Fragment {
         if (gameMode != null) {
             title.setText(gameMode.getTitle());
             description.setText(gameMode.getDescription());
-            highScore.setText("High Score: " + gameMode.getHighScore());
+
+            viewModel.getHighScore().observe(getViewLifecycleOwner(), score ->
+                    highScore.setText("High Score: " + score)
+            );
         }
 
         setupButtons(view);
@@ -64,6 +76,7 @@ public class ModeDescriptionFragment extends Fragment {
         btnBack.setOnClickListener(v -> requireActivity().onBackPressed());
 
         btnPlay.setOnClickListener(v -> {
+            // Navigate to GameplayFragment (mode already set in onCreate)
             Fragment gameplayFragment = new GameplayFragment();
             FragmentTransaction transaction = requireActivity()
                     .getSupportFragmentManager()
