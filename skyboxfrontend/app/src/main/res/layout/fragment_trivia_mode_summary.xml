@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="This is a description of the game mode. It tells the user what the objective and rules are."
-            android:textColor="@color/secondary"
+            android:textColor="@color/primary_text"
             android:textSize="16sp"
             android:lineSpacingExtra="4dp" />
     </FrameLayout>

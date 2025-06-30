@@ -22,6 +22,9 @@ import com.example.skybox_frontend.ui.trivia.model.TriviaGameState;
 import com.example.skybox_frontend.ui.trivia.model.TriviaQuestion;
 import com.example.skybox_frontend.ui.trivia.viewmodel.TriviaViewModel;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 public class GameplayFragment extends Fragment {
@@ -34,8 +37,9 @@ public class GameplayFragment extends Fragment {
     private String selectedAnswer = null;
     private CountDownTimer countDownTimer;
     private TriviaQuestion currentQuestion;
+    private Toast currentToast;
 
-    private static final long TIMER_DURATION = 30_000;
+    private static final long TIMER_DURATION = 10_000;
 
     @Nullable
     @Override
@@ -116,8 +120,8 @@ public class GameplayFragment extends Fragment {
 
         for (Button btn : optionButtons) {
             btn.setOnClickListener(v -> {
-                selectedAnswer = btn.getText().toString();
-                highlightSelection(btn);
+                selectedAnswer = v.getTag().toString();
+                highlightSelection((Button) v);
             });
         }
 
@@ -129,20 +133,26 @@ public class GameplayFragment extends Fragment {
         this.currentQuestion = question;
 
         questionText.setText(question.getQuestion());
-        Map<String, String> options = question.getOptions();
-        optionButtons[0].setText("A. " + options.get("A"));
-        optionButtons[1].setText("B. " + options.get("B"));
-        optionButtons[2].setText("C. " + options.get("C"));
-        optionButtons[3].setText("D. " + options.get("D"));
+
+        // Shuffle the options
+        List<Map.Entry<String, String>> shuffledOptions = new ArrayList<>(question.getOptions().entrySet());
+        Collections.shuffle(shuffledOptions);
+
+        // Map buttons to shuffled options
+        for (int i = 0; i < optionButtons.length; i++) {
+            Map.Entry<String, String> entry = shuffledOptions.get(i);
+            optionButtons[i].setTag(entry.getKey()); // store original key (A/B/C/D) for answer checking
+            optionButtons[i].setText(entry.getKey() + ". " + entry.getValue());
+            optionButtons[i].setEnabled(true);
+        }
 
         resetButtonColors();
         selectedAnswer = null;
 
-        for (Button btn : optionButtons) btn.setEnabled(true);
-
         if (requiresTimer()) startTimer();
         else timerText.setVisibility(View.GONE);
     }
+
 
     private void highlightSelection(Button selectedBtn) {
         resetButtonColors();
@@ -215,8 +225,6 @@ public class GameplayFragment extends Fragment {
         countDownTimer.start();
     }
 
-    private Toast currentToast;
-
     private void showToast(String message) {
         if (currentToast != null) currentToast.cancel();
 
@@ -230,7 +238,6 @@ public class GameplayFragment extends Fragment {
             }
         }, 1500);
     }
-
 
     @Override
     public void onDestroyView() {

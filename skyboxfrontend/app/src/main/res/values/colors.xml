@@ -1,42 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!-- Base Theme -->
-    <color name="background">#0B0F1A</color>          <!-- Deep Space -->
-    <color name="surface">#1A1F2B</color>             <!-- Stealth Indigo -->
-    <color name="primary_text">#C5C9D1</color>        <!-- Tactical Gray -->
-    <color name="accent">#3DAEFF</color>              <!-- HUD Blue -->
-    <color name="secondary">#5E748D</color>           <!-- Signal Blue -->
-    <color name="text_on_accent">#0B0F1A</color>      <!-- Deep Navy -->
-    <color name="transparent">#00FFFFFF</color>         <!-- Transparent -->
+    <color name="background">#141617</color>         <!-- Concrete Shadow -->
+    <color name="surface">#202427</color>            <!-- Composite Gray -->
+    <color name="primary_text">#BFC5C9</color>       <!-- Soft Titanium -->
+    <color name="accent">#5A6B78</color>             <!-- Graphite Blue -->
+    <color name="secondary">#3E454C</color>          <!-- Utility Steel -->
+    <color name="text_on_accent">#101112</color>     <!-- Inner Hull -->
+    <color name="transparent">#00FFFFFF</color>
 
     <!-- Status Colors -->
-    <color name="status_red">#FF4444</color>          <!-- Android Holo Red -->
-    <color name="status_green">#FF99CC00</color>        <!-- Android Holo Red -->
+    <color name="status_red">#B05858</color>
+    <color name="status_green">#6F8B78</color>
 
-    <!-- GRADIENTS -->
     <!-- Glow Gradient -->
-    <color name="glow_start">#0B0F1A</color>          <!-- Deep Space -->
-    <color name="glow_center">#3DAEFF</color>         <!-- HUD Blue -->
-    <color name="glow_end">#0B0F1A</color>            <!-- Deep Space -->
+    <color name="glow_start">#141617</color>
+    <color name="glow_center">#5A6B78</color>
+    <color name="glow_end">#141617</color>
 
     <!-- Diagonal Gradient -->
-    <color name="diagonal_start">#0B0F1A</color>      <!-- Deep Space -->
-    <color name="diagonal_end">#050505</color>        <!-- Stealth Indigo -->
-    <color name="diagonal_overlay">#0B0F1A</color>    <!-- Custom low-glow cyan -->
+    <color name="diagonal_start">#141617</color>
+    <color name="diagonal_end">#101112</color>
+    <color name="diagonal_overlay">#202427</color>
 
     <!-- Signal Gradient -->
-    <color name="signal_start">#5E748D</color>        <!-- Signal Blue -->
-    <color name="signal_end">#1A1F2B</color>          <!-- Stealth Indigo -->
+    <color name="signal_start">#3E454C</color>
+    <color name="signal_end">#202427</color>
 
-    <!-- ⬇Vertical Background Gradient -->
-    <color name="vertical_start">#1A1F2B</color>      <!-- Stealth Indigo -->
-    <color name="vertical_end">#0B0F1A</color>        <!-- Deep Space -->
+    <!-- Vertical Background Gradient -->
+    <color name="vertical_start">#202427</color>
+    <color name="vertical_end">#141617</color>
 
     <!-- Low Energy Accent -->
-    <color name="low_energy_end">#273444</color>      <!-- Custom desaturated blue -->
-
-
-
-
+    <color name="low_energy_end">#2D3338</color>
 </resources>
